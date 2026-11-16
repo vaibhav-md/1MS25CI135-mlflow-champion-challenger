@@ -1,0 +1,11 @@
+text,true_label,model_A_prediction,model_B_prediction
+I really enjoyed this project!,POSITIVE,POSITIVE,POSITIVE
+This is the worst experience ever.,NEGATIVE,NEGATIVE,NEGATIVE
+"The movie was okay, nothing special.",NEGATIVE,NEGATIVE,NEGATIVE
+I am extremely happy with the results.,POSITIVE,POSITIVE,POSITIVE
+I regret buying this product.,NEGATIVE,NEGATIVE,NEGATIVE
+The customer service was excellent.,POSITIVE,POSITIVE,POSITIVE
+The food was cold and tasteless.,NEGATIVE,NEGATIVE,NEGATIVE
+I would definitely recommend this app.,POSITIVE,POSITIVE,POSITIVE
+The delivery was late and the package was damaged.,NEGATIVE,NEGATIVE,NEGATIVE
+Everything worked perfectly. I am very satisfied.,POSITIVE,POSITIVE,POSITIVE
