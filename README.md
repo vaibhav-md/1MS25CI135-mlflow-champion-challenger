@@ -1,61 +1,56 @@
 # Champion–Challenger Model Comparison
 
-## Project
-This project compares two Hugging Face sentiment-classification models
-using MLflow experiment tracking and model registry aliases.
+## Project Overview
+This project compares two Hugging Face sentiment-classification models using identical evaluation inputs, MLflow tracking, and model registry aliases.
 
 ## Models
-- Model A: distilbert-base-uncased-finetuned-sst-2-english
-- Model B: textattack/bert-base-uncased-SST-2
+- Model A: `distilbert-base-uncased-finetuned-sst-2-english`
+- Model B: `textattack/bert-base-uncased-SST-2`
 
-Both models are evaluated on the same labelled inputs.
+## Dataset and Evaluation
+Both models were evaluated on 200 labelled sentences from the GLUE SST-2 validation dataset.
 
-## Evaluation
-The primary metric is macro-F1. The predefined decision rule is:
-1. The Challenger replaces the Champion if its macro-F1 improves by at least 0.01.
-2. Otherwise, the faster model is selected.
+| Metric | Model A | Model B |
+|---|---:|---:|
+| Accuracy | 0.9100 | 0.9150 |
+| Precision | 0.8716 | 0.8942 |
+| Recall | 0.9596 | 0.9394 |
+| Macro-F1 | 0.9099 | 0.9150 |
+| Inference time (seconds) | 13.7653 | 27.4046 |
 
-The current evaluation uses 10 manually labelled examples. Both models
-achieved perfect scores on this small set, so these results should not
-be interpreted as evidence of general performance.
+## Champion Selection and Decision Rationale
+Model B achieved a macro-F1 of 0.9150, compared with 0.9099 for Model A. Its improvement of approximately 0.0051 is below the predefined minimum improvement margin of 0.01. Therefore, Model B does not qualify to replace the Champion.
 
-## MLflow
-Experiment tracking URI: sqlite:///mlflow.db
-Experiment: Sentiment_Champion_Challenger
-Registered model: SentimentModel
-Aliases: champion and challenger
+Model A completed inference in approximately 13.77 seconds, whereas Model B required approximately 27.40 seconds on the same 200 evaluation samples. Model A was therefore about twice as fast. Model B achieved slightly higher precision, while Model A achieved higher recall. Since the Challenger did not meet the required macro-F1 improvement threshold, the faster model was retained. Model A remains the Champion and Model B remains the Challenger. This decision follows the predefined selection rule rather than relying on a single metric. These results are limited to the selected 200-sample evaluation subset and do not guarantee performance on every dataset.
 
-## Files
-- evaluate.py: evaluates both models and generates metrics and plots.
-- register_champion.py: registers models and assigns aliases.
-- predict_from_mlflow.py: loads the Champion through its MLflow alias.
-- eval_inputs.csv: labelled evaluation data.
-- new_inputs.csv: unseen prediction inputs.
-- model_comparison_predictions.csv: evaluation predictions.
-- new_data_predictions.csv: Champion predictions.
-- metrics_summary.json: evaluation metrics.
-- metric_comparison.png and confusion_matrices.png: evaluation plots.
+## MLflow Registry
+- Tracking URI: `sqlite:///mlflow.db`
+- Experiment: `Sentiment_Champion_Challenger`
+- Registered model: `SentimentModel`
+- Champion alias: Version 1 (Model A)
+- Challenger alias: Version 2 (Model B)
 
-## Run
-Install dependencies:
-```bash
-pip install -r requirements.txt
-```
+The Champion was loaded using its MLflow alias and used to predict 10 unseen examples. Results are saved in `outputs/new_data_predictions.csv`.
 
-Run evaluation:
-```bash
-python evaluate.py
-```
+## Project Files
+- `evaluate.py`: evaluates both models and logs results.
+- `register_champion.py`: registers models and assigns aliases.
+- `predict_from_mlflow.py`: loads the Champion alias for predictions.
+- `data/`: evaluation and unseen input CSV files.
+- `outputs/`: metrics, predictions, disagreement examples and plots.
+- `screenshots/`: MLflow comparison, registry aliases and prediction output.
 
-Register models and aliases:
-```bash
-python register_champion.py
-```
+## Running the Project
+Run from the repository root:
 
-Predict using the Champion:
-```bash
-python predict_from_mlflow.py
-```
+    pip install -r requirements.txt
+    python evaluate.py
+    python register_champion.py
+    python predict_from_mlflow.py
 
-The MLflow database and local model artifacts are intentionally excluded
-from GitHub. Run the scripts to recreate them.
+The MLflow database and local model artifacts are intentionally excluded from GitHub.
+
+## Tools
+Python, Hugging Face Transformers, PyTorch, scikit-learn, pandas, Matplotlib, Seaborn and MLflow.
+
+AI assistance was used during development and debugging. The implementation and evaluation decisions should be understood and explainable by the student.

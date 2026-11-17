@@ -1,7 +1,9 @@
 mlflow
-transformers
+transformers==5.20.2
 torch
 pandas
+numpy
 scikit-learn
 matplotlib
 seaborn
+datasets
