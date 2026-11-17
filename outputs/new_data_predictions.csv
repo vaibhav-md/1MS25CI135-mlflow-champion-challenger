@@ -1,0 +1,11 @@
+text,prediction,confidence
+The new update made the application much better.,POSITIVE,0.9899438619613647
+I am disappointed with the quality of this service.,NEGATIVE,0.9997126460075378
+The experience was absolutely wonderful.,POSITIVE,0.9998843669891357
+Nothing worked as expected. Very frustrating.,NEGATIVE,0.9996213912963867
+The product is decent for its price.,POSITIVE,0.9997814297676086
+I love how easy this software is to use.,POSITIVE,0.9932176470756531
+The entire process was a complete failure.,NEGATIVE,0.9997698664665222
+Customer support solved my problem quickly.,NEGATIVE,0.961624264717102
+I would never purchase this item again.,NEGATIVE,0.7288106679916382
+The results exceeded all my expectations.,POSITIVE,0.9994673132896423

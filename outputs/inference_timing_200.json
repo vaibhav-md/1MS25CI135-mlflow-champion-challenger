@@ -1,0 +1,10 @@
+{
+    "model_A": {
+        "total_inference_seconds": 13.1733,
+        "avg_latency_ms": 65.8666
+    },
+    "model_B": {
+        "total_inference_seconds": 26.6194,
+        "avg_latency_ms": 133.0968
+    }
+}

@@ -1,0 +1,6 @@
+text,true_label,model_A_prediction,model_B_prediction,analysis
+"we root for ( clara and paul ) , even like them , though perhaps it 's an emotion closer to pity . ",POSITIVE,POSITIVE,NEGATIVE,Model A matches the reference label.
+a synthesis of cliches and absurdities that seems positively decadent in its cinematic flash and emptiness . ,NEGATIVE,NEGATIVE,POSITIVE,Model A matches the reference label.
+manages to be both repulsively sadistic and mundane . ,NEGATIVE,NEGATIVE,POSITIVE,Model A matches the reference label.
+"the script kicks in , and mr. hartley 's distended pace and foot-dragging rhythms follow . ",NEGATIVE,POSITIVE,NEGATIVE,Model B matches the reference label.
+"this one is definitely one to skip , even for horror movie fanatics . ",NEGATIVE,NEGATIVE,POSITIVE,Model A matches the reference label.
