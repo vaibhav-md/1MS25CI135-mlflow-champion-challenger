@@ -34,6 +34,6 @@ output["confidence"] = predictions["confidence"].values
 
 output.to_csv(args.output, index=False)
 
-print("\\nPredictions:")
+print("\nPredictions:")
 print(output.to_string(index=False))
 print("\\nSaved:", args.output)
